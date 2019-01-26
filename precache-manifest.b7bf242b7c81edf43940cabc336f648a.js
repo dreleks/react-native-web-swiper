@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "40059386b35b4c024b22",
-    "url": "/react-native-web-swiper/static/js/main.40059386.chunk.js"
+    "revision": "3a7a64f595f11efbd2ae",
+    "url": "/react-native-web-swiper/static/js/main.3a7a64f5.chunk.js"
   },
   {
     "revision": "fe646c640d989a6dd2aa",
@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/react-native-web-swiper/static/js/runtime~main.590f8c90.js"
   },
   {
-    "revision": "4b3ffc3be6ee32ed050472e9ffa9a6e3",
+    "revision": "1136cbb11526d01d6885a18bf6f94de2",
     "url": "/react-native-web-swiper/index.html"
   }
 ];
