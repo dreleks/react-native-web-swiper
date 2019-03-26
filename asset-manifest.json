@@ -1,11 +1,11 @@
 {
-  "main.js": "/react-native-web-swiper/static/js/main.3a7a64f5.chunk.js",
-  "main.js.map": "/react-native-web-swiper/static/js/main.3a7a64f5.chunk.js.map",
-  "static/js/1.fe646c64.chunk.js": "/react-native-web-swiper/static/js/1.fe646c64.chunk.js",
-  "static/js/1.fe646c64.chunk.js.map": "/react-native-web-swiper/static/js/1.fe646c64.chunk.js.map",
-  "runtime~main.js": "/react-native-web-swiper/static/js/runtime~main.590f8c90.js",
-  "runtime~main.js.map": "/react-native-web-swiper/static/js/runtime~main.590f8c90.js.map",
+  "main.js": "/react-native-web-swiper/static/js/main.3e21fa73.chunk.js",
+  "main.js.map": "/react-native-web-swiper/static/js/main.3e21fa73.chunk.js.map",
+  "runtime~main.js": "/react-native-web-swiper/static/js/runtime~main.329d60ad.js",
+  "runtime~main.js.map": "/react-native-web-swiper/static/js/runtime~main.329d60ad.js.map",
+  "static/js/2.5111a2a5.chunk.js": "/react-native-web-swiper/static/js/2.5111a2a5.chunk.js",
+  "static/js/2.5111a2a5.chunk.js.map": "/react-native-web-swiper/static/js/2.5111a2a5.chunk.js.map",
   "index.html": "/react-native-web-swiper/index.html",
-  "precache-manifest.b7bf242b7c81edf43940cabc336f648a.js": "/react-native-web-swiper/precache-manifest.b7bf242b7c81edf43940cabc336f648a.js",
+  "precache-manifest.7b77e95f438ef450a7e81fe30a3dde80.js": "/react-native-web-swiper/precache-manifest.7b77e95f438ef450a7e81fe30a3dde80.js",
   "service-worker.js": "/react-native-web-swiper/service-worker.js"
 }
