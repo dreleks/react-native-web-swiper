@@ -176,12 +176,12 @@ export default class Swiper extends React.Component {
     _onLayout(event) {
         const {width,height} = event.nativeEvent.layout;
         this.setState({width,height}, () => this._fixState());
-		}
+    }
 		
-		buttonLayout = (event) => {
-      const { height } = event.nativeEvent.layout;
-      this.setState({ buttonHeight: height })
-  	}
+    buttonLayout = (event) => {
+        const { height } = event.nativeEvent.layout;
+        this.setState({ buttonHeight: height })
+    }
 
     render() {
       const {pan,width,height,activeIndex} = this.state;
