@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     },
     dotsWrapperStyle: {
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        width: "100%"
     },
     activeDotStyle: {
         backgroundColor: '#007aff',
