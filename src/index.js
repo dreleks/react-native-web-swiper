@@ -24,10 +24,11 @@ const styles = StyleSheet.create({
     controlsWrapperStyle: {
         position: "absolute",
         alignItems: "center",
-        justifyContent: "space-between",
+        //justifyContent: "space-between",
         right: 0,
         bottom: 0,
-        padding: 10
+        padding: 10,
+        width: "100%"
     },
     dotsWrapperStyle: {
         alignItems: "center",
