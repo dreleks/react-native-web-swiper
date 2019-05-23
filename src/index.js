@@ -179,75 +179,76 @@ export default class Swiper extends React.Component {
     }
 
     render() {
-        const {pan,width,height,activeIndex} = this.state;
-        const {
-            direction,
-            containerStyle,
-            swipeAreaStyle,
-            swipeWrapperStyle,
-            controlsWrapperStyle,
-            dotsWrapperStyle,
-            dotElement,
-            dotStyle,
-            activeDotElement,
-            activeDotStyle,
-            prevButtonElement,
-            prevButtonStyle,
-            prevButtonText,
-            nextButtonElement,
-            nextButtonStyle,
-            nextButtonText,
-            loop,
-        } = this.props;
-        if(!width) return (<View style={[styles.container,containerStyle]} onLayout={this._onLayout.bind(this)}/>);
-        const overRangeButtonsOpacity = !loop ? this.props.overRangeButtonsOpacity : this.props.overRangeButtonsOpacity || 1;
-        let {children} = this.props;
-        if(!Array.isArray(children)) children = [children];
-        this.count = children.length;
-        return (
-            <View style={[styles.container,containerStyle]} onLayout={this._onLayout.bind(this)}>
-                <View style={[styles.sliderContainer,swipeAreaStyle]}>
-                    <Animated.View
-                        style={[{
-                            position: "relative",
-                            top: 0,
-                            left: 0,
-                        },swipeWrapperStyle,{
-                            flexDirection: direction,
-                            width: direction==="row" ? width*this.count : width,
-                            height: direction==="row" ? height : height*this.count,
-                        },{transform:[{translateX:pan.x},{translateY:pan.y}]}]}
-                        {...this._panResponder.panHandlers}
-                    >
-                        {children.map((el,i)=>(<View key={i} style={{width,height}}>{el}</View>))}
-                    </Animated.View>
-                    <View style={[styles.controlsWrapperStyle,{
-                        flexDirection: direction,
-                    }, direction==="row" ? {left: 0} : {top: 0}, controlsWrapperStyle]}>
-                        <View style={{opacity:!activeIndex ? overRangeButtonsOpacity : 1}}>
-                            <TouchableOpacity disabled={!activeIndex && !loop} onPress={()=>this.moveUpDown(true)}>
-                                {prevButtonElement || <Text style={[styles.prevButtonStyle,prevButtonStyle]}>{prevButtonText}</Text>}
-                            </TouchableOpacity>
-                        </View>
-                        <View style={[{flexDirection:direction},styles.dotsWrapperStyle,dotsWrapperStyle]}>
-                            {children.map((el,i)=>(
-                                <View key={i}>
-                                    {i===activeIndex
-                                        ? activeDotElement || <View style={[styles.activeDotStyle,activeDotStyle]} />
-                                        : dotElement || <View style={[styles.dotStyle,dotStyle]} />}
-                                </View>
-                            ))}
-                        </View>
-                        <View style={{opacity:activeIndex+1>=this.count ? overRangeButtonsOpacity : 1}}>
-                            <TouchableOpacity disabled={activeIndex+1>=this.count && !loop} onPress={()=>this.moveUpDown()}>
-                                {nextButtonElement || <Text style={[styles.nextButtonStyle,nextButtonStyle]}>{nextButtonText}</Text>}
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </View>
-            </View>
-        );
-    }
+      const {pan,width,height,activeIndex} = this.state;
+      const {
+          direction,
+          containerStyle,
+          swipeAreaStyle,
+          swipeWrapperStyle,
+          controlsWrapperStyle,
+          dotsWrapperStyle,
+          dotElement,
+          dotStyle,
+          activeDotElement,
+          activeDotStyle,
+          prevButtonElement,
+          prevButtonStyle,
+          prevButtonText,
+          nextButtonElement,
+          nextButtonStyle,
+          nextButtonText,
+          loop,
+      } = this.props;
+      if(!width) return (<View style={[styles.container,containerStyle]} onLayout={this._onLayout.bind(this)}/>);
+      const overRangeButtonsOpacity = !loop ? this.props.overRangeButtonsOpacity : this.props.overRangeButtonsOpacity || 1;
+      let {children} = this.props;
+      if(!Array.isArray(children)) children = [children];
+      this.count = children.length;
+      const buttonTop = (this.props.height - this.state.buttonHeight) / 2;
+      return (
+          <View style={[styles.container,containerStyle]} onLayout={this._onLayout.bind(this)}>
+              <View onLayout={this.buttonLayout} style={{opacity:!activeIndex ? overRangeButtonsOpacity : 1, position: 'absolute', top: buttonTop, left: 0, zIndex: 100}}>
+                  <TouchableOpacity disabled={!activeIndex && !loop} onPress={()=>this.moveUpDown(true)}>
+                      {prevButtonElement || <Text style={[styles.prevButtonStyle,prevButtonStyle]}>{prevButtonText}</Text>}
+                  </TouchableOpacity>
+              </View>
+              <View style={{opacity:activeIndex+1>=this.count ? overRangeButtonsOpacity : 1, position: 'absolute', top: buttonTop, right: 0, zIndex: 100}}>
+                  <TouchableOpacity disabled={activeIndex+1>=this.count && !loop} onPress={()=>this.moveUpDown()}>
+                      {nextButtonElement || <Text style={[styles.nextButtonStyle,nextButtonStyle]}>{nextButtonText}</Text>}
+                  </TouchableOpacity>
+              </View>
+              <View style={[styles.sliderContainer,swipeAreaStyle]}>
+                  <Animated.View
+                      style={[{
+                          position: "relative",
+                          top: 0,
+                          left: 0,
+                      },swipeWrapperStyle,{
+                          flexDirection: direction,
+                          width: direction==="row" ? width*this.count : width,
+                          height: direction==="row" ? height : height*this.count,
+                      },{transform:[{translateX:pan.x},{translateY:pan.y}]}]}
+                      {...this._panResponder.panHandlers}
+                  >
+                      {children.map((el,i)=>(<View key={i} style={{width,height}}>{el}</View>))}
+                  </Animated.View>
+                  <View style={[styles.controlsWrapperStyle,{
+                      flexDirection: direction,
+                  }, direction==="row" ? {left: 0} : {top: 0}, controlsWrapperStyle]}>
+                      <View style={[{flexDirection:direction},styles.dotsWrapperStyle,dotsWrapperStyle]}>
+                          {children.map((el,i)=>(
+                              <View key={i}>
+                                  {i===activeIndex
+                                      ? activeDotElement || <View style={[styles.activeDotStyle,activeDotStyle]} />
+                                      : dotElement || <View style={[styles.dotStyle,dotStyle]} />}
+                              </View>
+                          ))}
+                      </View>
+                  </View>
+              </View>
+          </View>
+      );
+  }
 }
 
 Swiper.propTypes = {
